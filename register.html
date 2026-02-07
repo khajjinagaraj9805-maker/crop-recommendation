@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farmer Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+  <h2>🌾 AI Farming</h2>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2>👨‍🌾 Farmer Registration</h2>
+
+  {% if success %}
+    <p class="success">{{ success }}</p>
+  {% endif %}
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  <form method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="password" name="password" placeholder="Create Password" required>
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account? <a href="/login">Login Here</a></p>
+</div>
+</body>
+</html>

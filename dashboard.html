@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+  <h2>🌾 AI Farming</h2>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2>👋 Welcome, {{ user }}!</h2>
+  <p>You are successfully logged in.</p>
+
+  <a href="/" class="btn">Go to Crop Recommendation</a>
+  <a href="/logout" class="btn red">Logout</a>
+</div>
+
+</body>
+</html>

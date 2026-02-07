@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Crop & Fertilizer Recommendation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<!-- ---------------- NAVBAR ---------------- -->
+<div class="navbar">
+  <h2>🌾 AI Farming</h2>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </div>
+</div>
+
+<!-- ---------------- MAIN CONTAINER ---------------- -->
+<div class="container">
+    <h1>🌾 AI Powered Crop & Fertilizer Recommendation</h1>
+
+    <!-- Weather Section -->
+    <form action="/get_weather" method="post">
+      <h3>🌦 Weather Information</h3>
+      <input type="text" name="city" placeholder="Enter City Name" required />
+      <button type="submit">Get Weather</button>
+    </form>
+    <p class="result">{{ weather_text }}</p>
+
+    <!-- Crop Recommendation Section -->
+    <form action="/predict" method="post">
+      <h3>🌱 Crop Recommendation</h3>
+
+      <input type="number" step="any" name="N" placeholder="Nitrogen (N)" required>
+      <input type="number" step="any" name="P" placeholder="Phosphorus (P)" required>
+      <input type="number" step="any" name="K" placeholder="Potassium (K)" required>
+
+      <input type="number" step="any" name="temperature" placeholder="Temperature (°C)" value="{{ temperature or '' }}" required>
+      <input type="number" step="any" name="humidity" placeholder="Humidity (%)" value="{{ humidity or '' }}" required>
+      <input type="number" step="any" name="ph" placeholder="Soil pH" required>
+      <input type="number" step="any" name="rainfall" placeholder="Rainfall (mm)" value="{{ rainfall or '' }}" required>
+
+      <button type="submit">Get Crop & Fertilizer Recommendation</button>
+    </form>
+
+    <!-- Result Boxes -->
+    <p class="result">{{ prediction_text }}</p>
+    <p class="result">{{ fertilizer_text }}</p>
+</div>
+
+</body>
+</html>
